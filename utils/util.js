@@ -14,6 +14,11 @@ const formatNumber = n => {
   return n[1] ? n : '0' + n
 }
 
+const now = () => {
+  return formatTime(new Date())
+}
+
 module.exports = {
-  formatTime: formatTime
+  formatTime,
+  now
 }

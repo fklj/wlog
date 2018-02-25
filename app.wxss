@@ -5,6 +5,12 @@
   flex-direction: column;
   align-items: center;
   justify-content: space-between;
-  padding: 200rpx 0;
   box-sizing: border-box;
-} 
+}
+
+/**
+#ECFAFB
+#81CBC8
+#4AA6B5
+#D6C481
+*/

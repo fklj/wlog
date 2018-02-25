@@ -1,0 +1,6 @@
+{
+  "navigationBarTitleText": "Daily",
+  "usingComponents": {
+    "layout": "./layout"
+  }
+}

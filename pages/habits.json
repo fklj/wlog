@@ -1,0 +1,6 @@
+{
+  "navigationBarTitleText": "Habits",
+  "usingComponents": {
+    "layout": "./layout"
+  }
+}

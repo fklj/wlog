@@ -1,0 +1,13 @@
+<view class="container">
+  <view class="main">
+    <slot></slot>
+  </view>
+  <view class="footer">
+    <view class="fa fa-book selected" wx:if="{{page === 'daily'}}"></view>
+    <view class="fa fa-book" wx:else bind:tap="nav" data-dest="daily"></view>
+    <view class="fa fa-list selected" wx:if="{{page === 'habits'}}"></view>
+    <view class="fa fa-list" wx:else bind:tap="nav" data-dest="habits"></view>
+    <view class="fa fa-user selected" wx:if="{{page === 'user'}}"></view>
+    <view class="fa fa-user" wx:else bind:tap="nav" data-dest="user"></view>
+  </view>
+</view>

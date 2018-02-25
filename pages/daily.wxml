@@ -1,0 +1,5 @@
+<layout title="hello" page="daily">
+  <block wx:for="{{records}}" wx:for-item="record" wx:key="record">
+    <view>{{record}}</view>
+  </block>
+</layout>

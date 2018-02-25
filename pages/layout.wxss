@@ -1,0 +1,34 @@
+@import "../styles/fa.wxss";
+
+.container {
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+  width: 100vw;
+}
+
+.container .footer {
+  flex: 0 0 2.4rem;
+  display: flex;
+  border-top: 1px solid whitesmoke;
+}
+
+.container .footer .fa {
+  flex: 1;
+  text-align: center;
+  color: darkgray;
+  margin: 0.6rem;
+  font-size: 1.2rem;
+}
+
+.container .footer .selected {
+  color: #4AA6B5;
+}
+
+.container .main {
+  flex: 1;
+}
+
+
+
+
