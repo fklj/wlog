@@ -1,3 +1,12 @@
 <layout title="habits" page="habits">
-
+  <view id="habits">
+    <block wx:for="{{habits}}" wx:for-item="habit" wx:key="habit.id">
+      <view class="habit" bind:tap="nav" data-dest="habit?id={{habit.id}}">
+        {{habit.type}} - {{habit.name}}
+      </view>
+    </block>
+  </view>
+  <view id="actions">
+    <button bind:tap="nav" data-dest="habit">新建活动</button>
+  </view>
 </layout>

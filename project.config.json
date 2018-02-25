@@ -26,8 +26,21 @@
 			"list": []
 		},
 		"miniprogram": {
-			"current": -1,
-			"list": []
+			"current": 0,
+			"list": [
+				{
+					"id": -1,
+					"name": "habits",
+					"pathName": "pages/habits",
+					"query": ""
+				},
+				{
+					"id": -1,
+					"name": "habit",
+					"pathName": "pages/habit",
+					"query": ""
+				}
+			]
 		}
 	}
 }

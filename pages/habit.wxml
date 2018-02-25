@@ -1,0 +1,29 @@
+<layout title="hello" page="habit">
+  <form id="form" bindsubmit="save">
+    <label>活动类型</label>
+    <picker name="type" value="{{typeIndex}}" range="{{displayTypes}}"
+            bind:change="changeType">
+      <view id="type">
+        {{displayTypes[typeIndex]}}
+        <text class="fa fa-angle-down" />
+      </view>
+    </picker>
+
+    <label>活动名称</label>
+    <input name="name" placeholder="名称" value="{{habit.name}}" bind:change="changeName"/>
+
+    <block wx:if="{{ habit.type === 'number' }}">
+      <label>单位</label>
+      <input name="unit" placeholder="单位" value="{{habit.unit}}" bind:change="changeUnit"/>
+    </block>
+
+    <block wx:if="{{ habit.type === 'custom' }}">
+      <label>自定义值</label>
+      <input name="hvalues" placeholder="自定义值" value="{{hvalues}}" bind:change="changeValues"/>
+    </block>
+
+    <button formType="submit">保存</button>
+    <button bind:tap="nav" data-dest="habits">返回</button>
+    <button bind:tap="remove">删除</button>
+  </form>
+</layout>

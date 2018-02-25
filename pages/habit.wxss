@@ -1,0 +1,13 @@
+@import "../styles/fa.wxss";
+
+input,picker,button,label {
+  margin: 1rem;
+}
+
+input {
+  border: 1px solid #81CBC8;
+}
+
+#type {
+  color: #4AA6B5;
+}
