@@ -18,7 +18,16 @@ const now = () => {
   return formatTime(new Date())
 }
 
+function toEntries(obj) {
+  let results = []
+  for (let key in obj) {
+    results.push({key, value: obj[key]})
+  }
+  return results
+}
+
 module.exports = {
   formatTime,
-  now
+  now,
+  toEntries: toEntries
 }

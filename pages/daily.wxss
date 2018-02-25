@@ -1,0 +1,33 @@
+@import "../styles/fa.wxss";
+
+.habit {
+  border-bottom: 1px solid lightcyan;
+  display: flex;
+}
+
+.name {
+  flex: 0 0 160px;
+}
+
+.habit .records {
+  width: 100%;
+}
+
+.habit .records .new-record {
+  text-align: center;
+  width: 100%;
+  background-color: cyan;
+}
+
+.habit .records .record {
+  display: flex;
+}
+
+.habit .records .record .value{
+  flex: 1;
+}
+
+.habit .records .record .action {
+  flex: 0 0 60px;
+  text-align: center;
+}

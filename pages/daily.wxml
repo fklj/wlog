@@ -1,5 +1,30 @@
 <layout title="hello" page="daily">
-  <block wx:for="{{records}}" wx:for-item="record" wx:key="record">
-    <view>{{record}}</view>
+  <block wx:for="{{records}}" wx:for-item="hrecords" wx:key="hrecords.key">
+    <view class="habit">
+      <view class="name">
+        {{habits[hrecords.key].name}}
+      </view>
+      <view class="records">
+        <block wx:for="{{hrecords.value}}" wx:for-item="record" wx:key="record.key">
+          <view class="record">
+            <range class="value" record="{{record.value}}"
+                   habit="{{habits[hrecords.key]}}" bind:plus="plus" bind:minus="minus"
+                   data-hid="{{hrecords.key}}" data-key="{{record.key}}">
+              {{record.value}}
+            </range>
+            <view class="action">
+              <text class="fa fa-minus" bind:tap="delRecord"
+                    data-hid="{{hrecords.key}}" data-key="{{record.key}}" />
+            </view>
+          </view>
+        </block>
+        <view class="record">
+          <view class="value" />
+          <view class="action">
+            <text class="fa fa-plus" bind:tap="newRecord" data-hid="{{hrecords.key}}" />
+          </view>
+        </view>
+      </view>
+    </view>
   </block>
 </layout>

@@ -1,0 +1,5 @@
+<view class="range">
+  <view class="fa fa-minus" bind:tap="minus"/>
+  <view class="value">{{record}}</view>
+  <view class="fa fa-plus" bind:tap="plus"/>
+</view>

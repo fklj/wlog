@@ -1,0 +1,17 @@
+@import "../styles/fa.wxss";
+
+.range {
+  width: 100%;
+  background-color: lightblue;
+  display: flex;
+}
+
+.range .value {
+  width: 60%;
+  text-align: center;
+}
+
+.range .fa {
+  width: 20%;
+  text-align: center;
+}
