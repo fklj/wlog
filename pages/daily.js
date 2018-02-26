@@ -6,14 +6,37 @@ const util = require('../utils/util.js')
 Page({
   data: {
     habits: {},
-    records: []
+    records: [],
+    date: moment(Date.now()).endOf('day').unix() * 1000,
+    title: '',
+    left: '',
+    right: ''
+  },
+  prevDate: function () {
+    this.updateDate(this.data.date - 3600 * 24 * 1000)
+  },
+  nextDate: function () {
+    this.updateDate(this.data.date + 3600 * 24 * 1000)
+  },
+  updateDate: function (date) {
+    this.setData({date})
+    this.loadData()
   },
   loadData: function () {
+    const days = '日一二三四五六'
+    let day = moment(this.data.date).day().valueOf()
+    log.info(Date.now())
+    log.info(this.data.date)
+    this.setData({
+      title: moment(this.data.date).format('YYYY年MM月DD日'),
+      left: '周' + days[(day + 6 ) % 7],
+      right: this.data.date > Date.now() ? '' : '周' + days[(day + 1 ) % 7]
+    })
     let all = wx.getStorageSync('records')
     log.info('all', all)
     let habits = wx.getStorageSync('habits')
-    let startOfDate = moment().startOf('day')
-    let endOfDate = moment().endOf('day')
+    let startOfDate = moment(this.data.date).startOf('day')
+    let endOfDate = moment(this.data.date).endOf('day')
 
     let result = {}
     for (let hid in habits) {

@@ -1,4 +1,15 @@
 <layout title="hello" page="daily">
+  <view id="header">
+    <view id="prev" bind:tap="prevDate">
+      <text class="fa fa-angle-left" /> {{left}}
+    </view>
+    <view id="date">{{title}}</view>
+    <view id="next">
+      <view bind:tap="nextDate" wx:if="{{ right !== '' }}">
+        {{right}} <text class="fa fa-angle-right" />
+      </view>
+    </view>
+  </view>
   <block wx:for="{{records}}" wx:for-item="hrecords" wx:key="hrecords.key">
     <view class="habit">
       <view class="name">

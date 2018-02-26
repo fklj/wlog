@@ -31,3 +31,20 @@
   flex: 0 0 60px;
   text-align: center;
 }
+
+#header {
+  width: 100%;
+  display: flex;
+  background-color: #ECFAFB;
+  padding: 0.2rem 0;
+}
+
+#header #prev,#next {
+  text-align: center;
+  flex: 0 0 80px;
+}
+
+#header #date {
+  flex: 1;
+  text-align: center;
+}
