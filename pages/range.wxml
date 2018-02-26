@@ -1,5 +1,8 @@
 <view class="range">
-  <view class="fa fa-minus" bind:tap="minus"/>
-  <view class="value">{{record}}</view>
-  <view class="fa fa-plus" bind:tap="plus"/>
+  <text class="fa fa-minus" bind:tap="minus"/>
+  <view class="value">
+    <text>{{record}}</text>
+    <text wx:if="{{ habit.unit !== '' }}"> {{habit.unit}}</text>
+  </view>
+  <text class="fa fa-plus" bind:tap="plus"/>
 </view>

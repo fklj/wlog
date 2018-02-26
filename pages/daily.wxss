@@ -21,6 +21,7 @@
 
 .habit .records .record {
   display: flex;
+  border-bottom: 1px solid lightcyan;
 }
 
 .habit .records .record .value{
@@ -30,6 +31,14 @@
 .habit .records .record .action {
   flex: 0 0 60px;
   text-align: center;
+}
+
+.habit .records .record .action.del {
+  color: lightcoral;
+}
+
+.habit .records .record .action.add {
+  color: gray;
 }
 
 #header {

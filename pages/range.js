@@ -3,7 +3,7 @@ const log = require('../utils/log.js')
 Component({
   properties: {
     record: {
-      type: Number,
+      type: String,
       value: 0,
     },
     habit: {

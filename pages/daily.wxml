@@ -23,16 +23,16 @@
                    data-hid="{{hrecords.key}}" data-key="{{record.key}}">
               {{record.value}}
             </range>
-            <view class="action">
-              <text class="fa fa-minus" bind:tap="delRecord"
+            <view class="action del">
+              <text class="fa fa-minus-circle" bind:tap="delRecord"
                     data-hid="{{hrecords.key}}" data-key="{{record.key}}" />
             </view>
           </view>
         </block>
         <view class="record">
           <view class="value" />
-          <view class="action">
-            <text class="fa fa-plus" bind:tap="newRecord" data-hid="{{hrecords.key}}" />
+          <view class="action add">
+            <text class="fa fa-plus-circle" bind:tap="newRecord" data-hid="{{hrecords.key}}" />
           </view>
         </view>
       </view>
