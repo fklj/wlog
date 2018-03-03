@@ -1,41 +1,45 @@
 <layout title="hello" page="daily">
   <view id="header">
     <view id="prev" bind:tap="prevDate">
-      <text class="fa fa-angle-left" /> {{left}}
+      <text class="fa fa-chevron-left"/>
+      {{left}}
     </view>
     <view id="date">{{title}}</view>
     <view id="next">
       <view bind:tap="nextDate" wx:if="{{ right !== '' }}">
-        {{right}} <text class="fa fa-angle-right" />
+        {{right}}
+        <text class="fa fa-chevron-right"/>
       </view>
     </view>
   </view>
-  <block wx:for="{{records}}" wx:for-item="hrecords" wx:key="hrecords.key">
-    <view class="habit">
-      <view class="name">
-        {{habits[hrecords.key].name}}
-      </view>
-      <view class="records">
-        <block wx:for="{{hrecords.value}}" wx:for-item="record" wx:key="record.key">
-          <view class="record">
-            <range class="value" record="{{record.value}}"
-                   habit="{{habits[hrecords.key]}}" bind:plus="plus" bind:minus="minus"
-                   data-hid="{{hrecords.key}}" data-key="{{record.key}}">
-              {{record.value}}
-            </range>
-            <view class="action del">
-              <text class="fa fa-minus-circle" bind:tap="delRecord"
-                    data-hid="{{hrecords.key}}" data-key="{{record.key}}" />
+  <view id="records">
+    <block wx:for="{{records}}" wx:for-item="hrecords" wx:key="hrecords.key">
+      <view class="habit">
+        <view class="name">
+          {{habits[hrecords.key].name}}
+        </view>
+        <view class="records">
+          <block wx:for="{{hrecords.value}}" wx:for-item="record" wx:key="record.key">
+            <view class="record">
+              <range class="value" record="{{record.value}}"
+                     habit="{{habits[hrecords.key]}}" bind:plus="plus" bind:minus="minus"
+                     data-hid="{{hrecords.key}}" data-key="{{record.key}}">
+                {{record.value}}
+              </range>
+              <view class="action del">
+                <text class="fa fa-minus-circle" bind:tap="delRecord"
+                      data-hid="{{hrecords.key}}" data-key="{{record.key}}"/>
+              </view>
             </view>
-          </view>
-        </block>
-        <view class="record">
-          <view class="value" />
-          <view class="action add">
-            <text class="fa fa-plus-circle" bind:tap="newRecord" data-hid="{{hrecords.key}}" />
+          </block>
+          <view class="record">
+            <view class="value"/>
+            <view class="action add">
+              <text class="fa fa-plus-circle" bind:tap="newRecord" data-hid="{{hrecords.key}}"/>
+            </view>
           </view>
         </view>
       </view>
-    </view>
-  </block>
+    </block>
+  </view>
 </layout>

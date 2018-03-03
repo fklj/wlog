@@ -1,4 +1,11 @@
-<view class="range">
+<view class="range" wx:if="{{ habit.type === 'custom' }}">
+  <text class="fa fa-chevron-left" bind:tap="minus"/>
+  <view class="value">
+    <text>{{habit.values[record]}}</text>
+  </view>
+  <text class="fa fa-chevron-right" bind:tap="plus"/>
+</view>
+<view class="range" wx:else>
   <text class="fa fa-minus" bind:tap="minus"/>
   <view class="value">
     <text>{{record}}</text>
@@ -6,3 +13,4 @@
   </view>
   <text class="fa fa-plus" bind:tap="plus"/>
 </view>
+

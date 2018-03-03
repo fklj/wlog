@@ -1,16 +1,28 @@
 @import "../styles/fa.wxss";
 
-.habit {
-  border-bottom: 1px solid lightcyan;
-  display: flex;
+#records {
+  display: table;
+  width: 100vw;
 }
 
-.name {
-  flex: 0 0 160px;
+.habit {
+  border-bottom: 1px solid lightcyan;
+  display: table-row;
+}
+
+.habit .name {
+  display: table-cell;
+  vertical-align: middle;
+  width: 40%;
+  text-align: left;
+  font-size: 1.1rem;
+  padding-left: 0.5rem;
+  line-height: 2rem;
 }
 
 .habit .records {
-  width: 100%;
+  display: table-cell;
+  width: 60%;
 }
 
 .habit .records .new-record {
@@ -22,6 +34,7 @@
 .habit .records .record {
   display: flex;
   border-bottom: 1px solid lightcyan;
+  height: 1.8rem;
 }
 
 .habit .records .record .value{
@@ -30,7 +43,13 @@
 
 .habit .records .record .action {
   flex: 0 0 60px;
-  text-align: center;
+  text-align: right;
+  padding-right: 1rem;
+}
+
+.habit .records .record .action .fa {
+  font-size: 1.2rem;
+  line-height: 1.8rem;
 }
 
 .habit .records .record .action.del {
@@ -46,6 +65,7 @@
   display: flex;
   background-color: #ECFAFB;
   padding: 0.2rem 0;
+  margin-bottom: 0.5rem;
 }
 
 #header #prev,#next {

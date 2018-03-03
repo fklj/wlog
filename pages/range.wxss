@@ -2,16 +2,19 @@
 
 .range {
   width: 100%;
-  background-color: lightblue;
   display: flex;
 }
 
 .range .value {
   width: 60%;
   text-align: center;
+  line-height: 1.8rem;
 }
 
 .range .fa {
   width: 20%;
   text-align: center;
+  font-size: medium;
+  color: #81CBC8;
+  line-height: 1.8rem;
 }
