@@ -18,8 +18,8 @@
         </view>
       </view>
     </block>
-  </view>
-  <view id="actions">
-    <button id="new" bind:tap="nav" data-dest="habit">新建活动</button>
+    <view id="actions">
+      <button id="new" bind:tap="nav" data-dest="habit">新建活动</button>
+    </view>
   </view>
 </layout>

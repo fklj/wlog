@@ -1,29 +1,63 @@
-<layout title="hello" page="habit">
-  <form id="form" bindsubmit="save">
-    <label>活动类型</label>
-    <picker name="type" value="{{typeIndex}}" range="{{displayTypes}}"
-            bind:change="changeType">
-      <view id="type">
-        {{displayTypes[typeIndex]}}
-        <text class="fa fa-angle-down" />
+<layout page="habit">
+  <view id="habit">
+    <form id="form" bindsubmit="save">
+
+      <view class="group">
+        <label>名称</label>
+        <view>
+          <input name="name" value="{{habit.name}}" bind:change="changeName"/>
+        </view>
       </view>
-    </picker>
 
-    <label>活动名称</label>
-    <input name="name" placeholder="名称" value="{{habit.name}}" bind:change="changeName"/>
+      <view class="group">
+        <label>类型</label>
+        <view id="type">
+          <picker name="type" value="{{typeIndex}}" range="{{displayTypes}}"
+                  bind:change="changeType">
+            {{displayTypes[typeIndex]}}
+            <text class="fa fa-angle-down"/>
+          </picker>
+        </view>
+      </view>
 
-    <block wx:if="{{ habit.type === 'number' }}">
-      <label>单位</label>
-      <input name="unit" placeholder="单位" value="{{habit.unit}}" bind:change="changeUnit"/>
-    </block>
+      <view class="group">
+        <label>每日一次</label>
+        <view>
+          <switch disabled="{{habit.type === 'check'}}" checked="{{habit.once}}" bind:change="changeOnce"/>
+        </view>
+      </view>
 
-    <block wx:if="{{ habit.type === 'custom' }}">
-      <label>自定义值</label>
-      <input name="hvalues" placeholder="自定义值" value="{{hvalues}}" bind:change="changeValues"/>
-    </block>
+      <block wx:if="{{ habit.type === 'number' }}">
+        <view class="group">
+          <label>最小值</label>
+          <view>
+            <input name="min" value="{{habit.min}}" bind:change="changeMin"/>
+          </view>
+        </view>
+        <view class="group">
+          <label>最大值</label>
+          <view>
+            <input name="max" value="{{habit.max}}" bind:change="changeMax"/>
+          </view>
+        </view>
+        <view class="group">
+          <label>单位</label>
+          <view>
+            <input name="unit" value="{{habit.unit}}" bind:change="changeUnit"/>
+          </view>
+        </view>
+      </block>
 
-    <button formType="submit">保存</button>
-    <button bind:tap="nav" data-dest="habits">返回</button>
-    <button bind:tap="remove">删除</button>
-  </form>
+      <view class="group">
+        <block wx:if="{{ habit.type === 'custom' }}">
+          <label>自定义值</label>
+          <input name="hvalues" placeholder="自定义值" value="{{hvalues}}" bind:change="changeValues"/>
+        </block>
+      </view>
+
+      <button formType="submit">保存</button>
+      <button class="warn" bind:tap="nav" data-dest="habits">返回</button>
+      <button class="danger" bind:tap="remove">删除</button>
+    </form>
+  </view>
 </layout>

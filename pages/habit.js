@@ -3,7 +3,7 @@ const log = require('../utils/log.js')
 
 const template = {
   id: undefined,
-  name: '',
+  name: '新的活动',
   min: 0,
   max: 10,
   step: 1,
@@ -40,6 +40,9 @@ Page({
     log.info('change type', event.detail.value)
     let index = event.detail.value
     this.data.habit.type = types[index]
+    if (this.data.habit.type === 'check') {
+      this.data.habit.once = true;
+    }
     this.setData({habit: this.data.habit, typeIndex: index})
   },
   changeName: function (event) {
@@ -48,6 +51,18 @@ Page({
   },
   changeUnit: function (event) {
     this.data.habit.unit = event.detail.value
+    this.setData({habit: this.data.habit})
+  },
+  changeMin: function (event) {
+    this.data.habit.min = event.detail.value
+    this.setData({habit: this.data.habit})
+  },
+  changeMax: function (event) {
+    this.data.habit.max = event.detail.value
+    this.setData({habit: this.data.habit})
+  },
+  changeOnce: function (event) {
+    this.data.habit.once = event.detail.value
     this.setData({habit: this.data.habit})
   },
   changeValues: function (event) {

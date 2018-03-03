@@ -1,13 +1,31 @@
 @import "../styles/fa.wxss";
 
-input,picker,button,label {
+#habit {
   margin: 1rem;
 }
 
 input {
   border: 1px solid #81CBC8;
+  padding-left: 0.3rem;
 }
 
 #type {
-  color: #4AA6B5;
+  color: steelblue;
+}
+
+.group {
+  display: flex;
+  margin-bottom: 1rem;
+}
+
+.group label {
+  flex: 0 0 120px;
+}
+
+.group view {
+  flex: 1;
+}
+
+button {
+  margin-bottom: 1rem;
 }
