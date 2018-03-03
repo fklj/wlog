@@ -1,0 +1,5 @@
+<layout title="user" page="user">
+  <view class="container">
+    <canvas canvas-id="columnCanvas"></canvas>
+  </view>
+</layout>

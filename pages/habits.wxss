@@ -1,3 +1,5 @@
+@import "../styles/fa.wxss";
+
 .habit {
   border-bottom: 1px solid lightcyan;
   margin-top: 0.5rem;

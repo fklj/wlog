@@ -1,0 +1,5 @@
+.container canvas {
+  margin-top: 100px;
+  width: 100vw;
+  height: 300px;
+}

@@ -1,8 +1,11 @@
 <layout title="habits" page="habits">
   <view id="habits">
     <block wx:for="{{habits}}" wx:for-item="habit" wx:key="habit.id">
+      <view bind:tap="nav" data-dest="stats?id={{habit.id}}">
+        <text class="fa fa-bar-chart"></text>
+      </view>
       <view class="habit" bind:tap="nav" data-dest="habit?id={{habit.id}}">
-        {{habit.type}} - {{habit.name}}
+        <text>{{habit.type}} - {{habit.name}} </text>
       </view>
     </block>
   </view>
