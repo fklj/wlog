@@ -1,6 +1,42 @@
 @import "../styles/fa.wxss";
 
+#habits {
+  margin: 1rem;
+}
+
 .habit {
   border-bottom: 1px solid lightcyan;
-  margin-top: 0.5rem;
+  margin-bottom: 0.5rem;
+  display: flex;
+}
+
+.habit .icon {
+  flex: 0 0 30px;
+  text-align: center;
+  color: sandybrown;
+}
+
+.habit .name {
+  flex: 1;
+}
+
+.habit .config {
+  flex: 0 0 60px;
+  color: #81CBC8;
+}
+
+.habit .stat {
+  flex: 0 0 40px;
+  color: #4AA6B5;
+}
+
+#actions {
+  margin-top: 1rem;
+}
+
+#actions #new {
+  width: 80%;
+  height: 2rem;
+  line-height: 2rem;
+  background-color: #ECFAFB;
 }

@@ -1,15 +1,25 @@
 <layout title="habits" page="habits">
   <view id="habits">
     <block wx:for="{{habits}}" wx:for-item="habit" wx:key="habit.id">
-      <view bind:tap="nav" data-dest="stats?id={{habit.id}}">
-        <text class="fa fa-bar-chart"></text>
-      </view>
-      <view class="habit" bind:tap="nav" data-dest="habit?id={{habit.id}}">
-        <text>{{habit.type}} - {{habit.name}} </text>
+      <view class="habit">
+        <view class="icon">
+          <text class="fa fa-check-square-o" wx:if="{{ habit.type === 'check' }}" />
+          <text class="fa fa-calculator" wx:if="{{ habit.type === 'number' }}" />
+          <text class="fa fa-file-text-o" wx:if="{{ habit.type === 'custom' }}" />
+        </view>
+        <view class="name">
+          <text>{{habit.name}}</text>
+        </view>
+        <view class="config" bind:tap="nav" data-dest="habit?id={{habit.id}}">
+          <text class="fa fa-cog"></text>
+        </view>
+        <view class="stat" bind:tap="nav" data-dest="stats?id={{habit.id}}">
+          <text class="fa fa-bar-chart"></text>
+        </view>
       </view>
     </block>
   </view>
   <view id="actions">
-    <button bind:tap="nav" data-dest="habit">新建活动</button>
+    <button id="new" bind:tap="nav" data-dest="habit">新建活动</button>
   </view>
 </layout>
