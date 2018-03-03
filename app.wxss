@@ -14,3 +14,10 @@
 #4AA6B5
 #D6C481
 */
+
+button {
+  margin: auto 2rem;
+  height: 2rem;
+  line-height: 2rem;
+  background-color: #ECFAFB;
+}

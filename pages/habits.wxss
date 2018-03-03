@@ -33,10 +33,3 @@
 #actions {
   margin-top: 1rem;
 }
-
-#actions #new {
-  width: 80%;
-  height: 2rem;
-  line-height: 2rem;
-  background-color: #ECFAFB;
-}
