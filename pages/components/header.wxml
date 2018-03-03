@@ -1,0 +1,17 @@
+<view class="header">
+  <view class="left">
+    <view bind:tap="tapLeft" wx:if="{{ allowLeft }}">
+      <text class="fa fa-chevron-left"/>
+      <text class="text"> {{left}} </text>
+    </view>
+  </view>
+  <view class="middle">
+    <slot />
+  </view>
+  <view class="right">
+    <view bind:tap="tapRight" wx:if="{{ allowRight }}">
+      <text class="text"> {{right}} </text>
+      <text class="fa fa-chevron-right"/>
+    </view>
+  </view>
+</view>

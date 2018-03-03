@@ -1,17 +1,8 @@
 <layout title="hello" page="daily">
-  <view id="header">
-    <view id="prev" bind:tap="prevDate">
-      <text class="fa fa-chevron-left"/>
-      {{left}}
-    </view>
+  <header id="header" left="{{left}}" right="{{right}}" allowRight="{{ right !== '' }}"
+      bind:tapLeft="headerTapLeft" bind:tapRight="headerTapRight">
     <view id="date">{{title}}</view>
-    <view id="next">
-      <view bind:tap="nextDate" wx:if="{{ right !== '' }}">
-        {{right}}
-        <text class="fa fa-chevron-right"/>
-      </view>
-    </view>
-  </view>
+  </header>
   <view id="records">
     <block wx:for="{{records}}" wx:for-item="hrecords" wx:key="hrecords.key">
       <view class="habit">

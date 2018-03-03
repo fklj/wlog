@@ -96,5 +96,11 @@ Page({
   minus: function (event) {
     log.info('plus', event)
     this.changeRecord(event, -1);
+  },
+  headerTapLeft: function (event) {
+    this.updateDate(this.data.date - 3600 * 24 * 1000)
+  },
+  headerTapRight: function (event) {
+    this.updateDate(this.data.date + 3600 * 24 * 1000)
   }
 })
