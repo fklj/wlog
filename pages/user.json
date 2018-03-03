@@ -1,6 +1,0 @@
-{
-  "navigationBarTitleText": "User",
-  "usingComponents": {
-    "layout": "./layout"
-  }
-}

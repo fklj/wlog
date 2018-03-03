@@ -1,6 +1,6 @@
 {
   "navigationBarTitleText": "Stats",
   "usingComponents": {
-    "layout": "./layout"
+    "layout": "components/layout"
   }
 }

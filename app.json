@@ -3,7 +3,6 @@
     "pages/daily",
     "pages/habits",
     "pages/habit",
-    "pages/user",
     "pages/stats"
   ],
   "window":{

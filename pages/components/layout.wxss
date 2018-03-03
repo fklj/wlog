@@ -1,4 +1,4 @@
-@import "../styles/fa.wxss";
+@import "../../styles/fa.wxss";
 
 .container {
   display: flex;

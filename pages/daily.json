@@ -1,7 +1,7 @@
 {
   "navigationBarTitleText": "活动记录",
   "usingComponents": {
-    "layout": "./layout",
-    "range": "./range"
+    "layout": "components/layout",
+    "range": "components/range"
   }
 }
