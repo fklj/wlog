@@ -2,45 +2,94 @@ const log = require('./utils/log.js')
 
 //app.js
 App({
-  onLaunch: function () {
-    log.info('launch')
-
+  saveSession: function(res) {
+    let cookies = res.header['Set-Cookie']
+    for (let cookie of cookies.split(',')) {
+      for (let val of cookie.split(';')) {
+        if (val.startsWith('koa:sess.sig')) {
+          wx.setStorageSync('koa:sess.sig', val)
+        } else if (val.startsWith('koa:sess')) {
+          wx.setStorageSync('koa:sess', val)
+        }
+      }
+    }
+    if (!wx.getStorageSync('habits')) {
+      this.syncFromServer()
+    }
+  },
+  login: function() {
+    let app = this
     // 登录
     wx.login({
       success: res => {
-        log.info('login success', res)
+        if (res.code) {
+          wx.request({
+            url: 'https://vitalog.cn/s/wx',
+            data: { 'code': res.code  },
+            method: 'POST',
+            success: function (res) {
+              app.saveSession(res)
+            }
+          })
+        }
       },
       fail: res => {
-        log.info('login fail', res)
-      },
-      complete: res => {
-        log.info('login complete')
+        log.error('login fail', res)
       }
     })
-
-    // 获取用户信息
-    wx.getSetting({
-      success: res => {
-        log.info('got setting', res)
-        if (res.authSetting['scope.userInfo']) {
-          // 已经授权，可以直接调用 getUserInfo 获取头像昵称，不会弹框
-          wx.getUserInfo({
-            success: res => {
-              log.info('got user info', res)
-
-              // 可以将 res 发送给后台解码出 unionId
-              this.globalData.userInfo = res.userInfo
-
-              // 由于 getUserInfo 是网络请求，可能会在 Page.onLoad 之后才返回
-              // 所以此处加入 callback 以防止这种情况
-              if (this.userInfoReadyCallback) {
-                this.userInfoReadyCallback(res)
-              }
+  },
+  onLaunch: function () {
+    this.login()
+  },
+  syncToServer: function () {
+    let cookie = wx.getStorageSync('koa:sess') + ';' + wx.getStorageSync('koa:sess.sig')
+    let data = {
+      habits: wx.getStorageSync('habits'),
+      records: wx.getStorageSync('records'),
+      updatedTime: Date.now()
+    }
+    wx.request({
+      url: 'https://vitalog.cn/s/vlog/data/0',
+      method: 'POST',
+      data,
+      header: {
+        cookie
+      },
+      success: function (res) {
+        log.info('synced to server')
+      }
+    })
+  },
+  syncFromServer: function () {
+    let cookie = wx.getStorageSync('koa:sess') + ';' + wx.getStorageSync('koa:sess.sig')
+    wx.request({
+      url: 'https://vitalog.cn/s/vlog/data/0',
+      header: {
+        cookie
+      },
+      success: function (res) {
+        log.info('d', res.data)
+        if (res.data) {
+          wx.setStorageSync('habits', res.data.habits)
+          wx.setStorageSync('records', res.data.records)
+          wx.showToast({
+            title: '同步数据完成',
+            icon: 'success',
+            duration: 1000,
+            success: () => {
+              setTimeout(() => {
+                wx.redirectTo({
+                  url: 'daily'
+                })
+              }, 1000)
             }
           })
         }
       }
     })
+  },
+  onHide: function () {
+    this.syncToServer()
   },
   globalData: {
     userInfo: null
