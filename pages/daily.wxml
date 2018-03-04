@@ -8,7 +8,7 @@
   <view id="records">
     <block wx:for="{{records}}" wx:for-item="hrecords" wx:key="hrecords.key">
       <view class="habit">
-        <view class="name">
+        <view class="name" bind:tap="nav" data-dest="stats?id={{hrecords.key}}">
           <text class="stat fa fa-bar-chart"></text> {{habits[hrecords.key].name}}
         </view>
         <view class="records">

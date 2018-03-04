@@ -113,5 +113,11 @@ Page({
     all[hid] = hrecords
     wx.setStorageSync('records', all)
     this.loadData()
+  },
+  nav: function (event) {
+    log.info('redirect', event.currentTarget.dataset.dest)
+    wx.redirectTo({
+      url: event.currentTarget.dataset.dest
+    })
   }
 })
