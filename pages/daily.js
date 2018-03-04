@@ -108,8 +108,9 @@ Page({
     let hid = event.target.dataset.hid
     let all = wx.getStorageSync('records') || {}
     let hrecords = all[hid] || {}
-    let key = (hrecords === {}) ? this.data.date : Object.keys(hrecords)[0]
-    hrecords[this.data.date] = 1 - (hrecords[key] || 0)
+    let keys = Object.keys(hrecords).filter(k => k > this.data.date - 1000 * 3600 * 24 && k <= this.data.date)
+    let key = (keys === []) ? this.data.date : keys[0]
+    hrecords[key] = !(hrecords[key] || false)
     all[hid] = hrecords
     wx.setStorageSync('records', all)
     this.loadData()
