@@ -1,0 +1,6 @@
+{
+  "navigationBarTitleText": "说明",
+  "usingComponents": {
+    "layout": "components/layout"
+  }
+}

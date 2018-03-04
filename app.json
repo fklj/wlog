@@ -3,7 +3,8 @@
     "pages/daily",
     "pages/habits",
     "pages/habit",
-    "pages/stats"
+    "pages/stats",
+    "pages/info"
   ],
   "window":{
     "backgroundTextStyle":"light",

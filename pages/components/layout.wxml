@@ -7,7 +7,7 @@
     <view class="fa fa-book" wx:else bind:tap="nav" data-dest="daily"></view>
     <view class="fa fa-list selected" wx:if="{{page === 'habits'}}"></view>
     <view class="fa fa-list" wx:else bind:tap="nav" data-dest="habits"></view>
-    <view class="fa fa-user selected" wx:if="{{page === 'user'}}"></view>
-    <view class="fa fa-user" wx:else bind:tap="nav" data-dest="user"></view>
+    <view class="fa fa-info-circle selected" wx:if="{{page === 'info'}}"></view>
+    <view class="fa fa-info-circle" wx:else bind:tap="nav" data-dest="info"></view>
   </view>
 </view>

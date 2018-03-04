@@ -1,0 +1,7 @@
+<layout page="info">
+  <view>
+    <text>
+      欢迎使用维他记，有任何建议请联系vlog@fklj.org。
+    </text>
+  </view>
+</layout>
