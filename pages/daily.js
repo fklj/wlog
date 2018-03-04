@@ -66,6 +66,9 @@ Page({
     let hid = event.target.dataset.hid
     let all = wx.getStorageSync('records') || {}
     let key = Date.now()
+    if (this.data.date.unix() === moment(key).endOf('day').unix()) {
+      key = this.data.date
+    }
     let hrecords = all[hid] || {}
     hrecords[key] = 0
     all[hid] = hrecords
