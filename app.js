@@ -6,9 +6,9 @@ App({
     let cookies = res.header['Set-Cookie']
     for (let cookie of cookies.split(',')) {
       for (let val of cookie.split(';')) {
-        if (val.startsWith('koa:sess.sig')) {
+        if (val.includes('koa:sess.sig')) {
           wx.setStorageSync('koa:sess.sig', val)
-        } else if (val.startsWith('koa:sess')) {
+        } else if (val.includes('koa:sess')) {
           wx.setStorageSync('koa:sess', val)
         }
       }
@@ -68,7 +68,6 @@ App({
         cookie
       },
       success: function (res) {
-        log.info('d', res.data)
         if (res.data) {
           wx.setStorageSync('habits', res.data.habits)
           wx.setStorageSync('records', res.data.records)
