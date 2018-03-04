@@ -18,5 +18,11 @@ Page({
     wx.redirectTo({
       url: event.currentTarget.dataset.dest
     })
+  },
+  publish: function (event) {
+    wx.showModal({
+      title: 'test',
+      content: 'cc',
+    })
   }
 })

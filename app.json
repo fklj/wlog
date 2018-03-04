@@ -4,6 +4,7 @@
     "pages/habits",
     "pages/habit",
     "pages/stats",
+    "pages/market",
     "pages/info"
   ],
   "window":{

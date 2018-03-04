@@ -1,0 +1,6 @@
+{
+  "navigationBarTitleText": "日程模板",
+  "usingComponents": {
+    "layout": "components/layout"
+  }
+}

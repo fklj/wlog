@@ -45,6 +45,12 @@
 					"name": "stats",
 					"pathName": "pages/stats",
 					"query": ""
+				},
+				{
+					"id": -1,
+					"name": "market",
+					"pathName": "pages/market",
+					"query": ""
 				}
 			]
 		}

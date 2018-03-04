@@ -33,3 +33,7 @@
 #actions {
   margin-top: 1rem;
 }
+
+#actions button {
+  margin-bottom: 0.5rem;
+}

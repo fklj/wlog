@@ -1,0 +1,36 @@
+@import "../styles/fa.wxss";
+
+.market {
+  margin: 1rem;
+}
+
+.header {
+  background: whitesmoke;
+  height: 2rem;
+  line-height: 2rem;
+  font-size: 1.3rem;
+}
+
+.template {
+  height: 2rem;
+  line-height: 2rem;
+  border-bottom: 1px solid lightblue;
+  display: flex;
+  margin-bottom: 0.5rem;
+}
+
+.template .name {
+  flex: 1;
+}
+
+.template text {
+  flex: 0 0 1rem;
+}
+
+.template button {
+  flex: 0 0 4rem;
+}
+
+.habit {
+  margin-left: 2rem;
+}

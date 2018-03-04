@@ -1,0 +1,23 @@
+<layout page="market">
+  <view class="market">
+    <view class="header">
+      所有日程
+    </view>
+    <block wx:for="{{templates}}" wx:for-item="template" wx:key="template.id">
+      <view class="template">
+        <view class="name">{{ template.value.content.name }}</view>
+        <text class="fa fa-angle-double-up" wx:if="{{expanded[template.key]}}"
+              bind:tap="toggle" data-id="{{template.key}}"/>
+        <text class="fa fa-angle-double-down" wx:else
+              bind:tap="toggle" data-id="{{template.key}}"/>
+        <button bind:tap="use" data-habits="{{template.value.content.habits}}">应用</button>
+      </view>
+      <block wx:if="{{expanded[template.key]}}">
+        <view wx:for="{{ template.value.content.habits }}" wx:for-item="habit"
+              wx:key="habit.id">
+          <view class="habit">{{ habit.name }}</view>
+        </view>
+      </block>
+    </block>
+  </view>
+</layout>
