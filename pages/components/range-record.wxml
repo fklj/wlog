@@ -1,0 +1,25 @@
+<view class="record" wx:if="{{ habit.type === 'custom' }}">
+  <view class="action {{ minusStatus }}" bind:tap="minus">
+    <text class="fa fa-chevron-left" />
+  </view>
+  <view class="value">
+    <text>{{habit.values[record]}}</text>
+  </view>
+  <view class="action {{ plusStatus }}" bind:tap="plus">
+    <text class="fa fa-chevron-right" />
+  </view>
+</view>
+<view class="record" wx:elif="{{ habit.type === 'number' }}">
+  <view class="action {{ minusStatus }}" bind:tap="minus">
+    <text class="fa fa-minus" />
+  </view>
+  <view class="value">
+    <text>{{record}}</text>
+    <text wx:if="{{ habit.unit !== '' }}"> {{habit.unit}}</text>
+  </view>
+  <view class="action {{ plusStatus }}" bind:tap="plus">
+    <text class="fa fa-plus" />
+  </view>
+</view>
+
+

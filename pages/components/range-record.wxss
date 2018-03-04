@@ -1,0 +1,28 @@
+@import "../../styles/fa.wxss";
+
+.record {
+  width: 100%;
+  display: flex;
+  font-size: 1.1rem;
+}
+
+.record .value {
+  width: 60%;
+  text-align: center;
+  line-height: 2rem;
+}
+
+.record .action {
+  width: 20%;
+  text-align: center;
+  font-size: medium;
+  line-height: 2rem;
+}
+
+.record .action.inactive {
+  color: lightgray;
+}
+
+.record .action.active {
+  color: #81CBC8;
+}

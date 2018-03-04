@@ -1,34 +1,47 @@
 <layout title="hello" page="daily">
   <header id="header" left="{{left}}" right="{{right}}" allowRight="{{ right !== '' }}"
       bind:tapLeft="headerTapLeft" bind:tapRight="headerTapRight">
-    <view id="date">{{title}}</view>
+    <view id="date">
+      {{title}}
+    </view>
   </header>
   <view id="records">
     <block wx:for="{{records}}" wx:for-item="hrecords" wx:key="hrecords.key">
       <view class="habit">
         <view class="name">
-          {{habits[hrecords.key].name}}
+          <text class="stat fa fa-bar-chart"></text> {{habits[hrecords.key].name}}
         </view>
         <view class="records">
-          <block wx:for="{{hrecords.value}}" wx:for-item="record" wx:key="record.key">
+          <block wx:if="{{habits[hrecords.key].type === 'check' }}">
             <view class="record">
-              <range class="value" record="{{record.value}}"
-                     habit="{{habits[hrecords.key]}}" bind:plus="plus" bind:minus="minus"
-                     data-hid="{{hrecords.key}}" data-key="{{record.key}}">
-                {{record.value}}
-              </range>
-              <view class="action del">
-                <text class="fa fa-minus-circle" bind:tap="delRecord"
-                      data-hid="{{hrecords.key}}" data-key="{{record.key}}"/>
+              <check-record class="value" records="{{hrecords.value}}" habit="{{habits[hrecords.key]}}"
+                            bind:toggle="toggle" data-hid="{{hrecords.key}}">
+              </check-record>
+              <view class="action">
               </view>
             </view>
           </block>
-          <view class="record">
-            <view class="value"/>
-            <view class="action add">
-              <text class="fa fa-plus-circle" bind:tap="newRecord" data-hid="{{hrecords.key}}"/>
+          <block wx:else>
+            <block wx:for="{{hrecords.value}}" wx:for-item="record" wx:key="record.key">
+              <view class="record">
+                <range-record class="value" record="{{record.value}}"
+                              habit="{{habits[hrecords.key]}}" bind:plus="plus" bind:minus="minus"
+                              data-hid="{{hrecords.key}}" data-key="{{record.key}}">
+                  {{record.value}}
+                </range-record>
+                <view class="action del">
+                  <text class="fa fa-minus-circle" bind:tap="delRecord"
+                        data-hid="{{hrecords.key}}" data-key="{{record.key}}"/>
+                </view>
+              </view>
+            </block>
+            <view class="record" wx:if="{{!habits[hrecords.key].once || hrecords.value.length === 0 }}">
+              <view class="value"/>
+              <view class="action add">
+                <text class="fa fa-plus-circle" bind:tap="newRecord" data-hid="{{hrecords.key}}"/>
+              </view>
             </view>
-          </view>
+          </block>
         </view>
       </view>
     </block>

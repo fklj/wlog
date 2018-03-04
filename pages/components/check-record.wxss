@@ -1,0 +1,6 @@
+.record {
+  text-align: center;
+  width: 100%;
+  line-height: 1.8rem;
+  height: 2rem;
+}

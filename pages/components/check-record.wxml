@@ -1,0 +1,3 @@
+<view class="record">
+  <switch checked="{{checked}}" bind:change="toggle"></switch>
+</view>

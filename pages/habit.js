@@ -46,10 +46,12 @@ Page({
     this.setData({habit: this.data.habit, typeIndex: index})
   },
   changeName: function (event) {
+    log.info('e', event)
     this.data.habit.name = event.detail.value
     this.setData({habit: this.data.habit})
   },
   changeUnit: function (event) {
+    log.info('e', event)
     this.data.habit.unit = event.detail.value
     this.setData({habit: this.data.habit})
   },
@@ -98,13 +100,16 @@ Page({
     return h
   },
   save: function () {
-    let habits = wx.getStorageSync('habits') || {}
-    let h = this.data.habit
-    h = this.normalizeHabit(h, habits, this.data.hvalues)
-    log.info('save habit', h)
-    habits[h.id] = h
-    wx.setStorageSync('habits', habits)
-    wx.redirectTo({url: 'habits'})
+    // FIXME: 保证已经处理change事件
+    setTimeout(() => {
+      let habits = wx.getStorageSync('habits') || {}
+      let h = this.data.habit
+      h = this.normalizeHabit(h, habits, this.data.hvalues)
+      log.info('save habit', h)
+      habits[h.id] = h
+      wx.setStorageSync('habits', habits)
+      wx.redirectTo({url: 'habits'})
+    }, 200)
   },
   remove: function () {
     if (this.data.habit.id > 0) {

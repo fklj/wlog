@@ -25,15 +25,14 @@ Page({
   loadData: function () {
     const days = '日一二三四五六'
     let day = moment(this.data.date).day().valueOf()
-    log.info(Date.now())
-    log.info(this.data.date)
+    // log.info(this.data.date)
     this.setData({
       title: moment(this.data.date).format('YYYY年MM月DD日'),
       left: '周' + days[(day + 6 ) % 7],
       right: this.data.date > Date.now() ? '' : '周' + days[(day + 1 ) % 7]
     })
     let all = wx.getStorageSync('records')
-    log.info('all', all)
+    // log.info('all', all)
     let habits = wx.getStorageSync('habits')
     let startOfDate = moment(this.data.date).startOf('day')
     let endOfDate = moment(this.data.date).endOf('day')
@@ -59,6 +58,7 @@ Page({
     log.info('records', result)
   },
   onLoad: function () {
+    // wx.clearStorage()
     this.loadData()
   },
   newRecord: function (event) {
@@ -102,5 +102,16 @@ Page({
   },
   headerTapRight: function (event) {
     this.updateDate(this.data.date + 3600 * 24 * 1000)
+  },
+  toggle: function (event) {
+    log.info('toggle', event)
+    let hid = event.target.dataset.hid
+    let all = wx.getStorageSync('records') || {}
+    let hrecords = all[hid] || {}
+    let key = (hrecords === {}) ? this.data.date : Object.keys(hrecords)[0]
+    hrecords[this.data.date] = 1 - (hrecords[key] || 0)
+    all[hid] = hrecords
+    wx.setStorageSync('records', all)
+    this.loadData()
   }
 })
