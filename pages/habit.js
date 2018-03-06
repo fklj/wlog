@@ -30,7 +30,7 @@ Page({
   onLoad: function (options) {
     log.info('options', options)
     let hid = options.id || -1
-    let habits = wx.getStorageSync('habits') || {}
+    let habits = getApp().data.habits
     let habit = habits[hid] || JSON.parse(JSON.stringify(template))
     let hvalues = habit.values.join(' ')
     let typeIndex = this.getTypeIndex(habit.type)
@@ -96,18 +96,18 @@ Page({
   save: function () {
     // FIXME: 保证已经处理change事件
     setTimeout(() => {
-      let habits = wx.getStorageSync('habits') || {}
+      let habits = getApp().data.habits
       let h = this.data.habit
       h = this.normalizeHabit(h, habits, this.data.hvalues)
       log.info('save habit', h)
       habits[h.id] = h
       wx.setStorageSync('habits', habits)
-      wx.redirectTo({url: 'habits'})
+      wx.navigateBack()
     }, 200)
   },
   remove: function () {
     if (this.data.habit.id > 0) {
-      let habits = wx.getStorageSync('habits') || {}
+      let habits = getApp().data.habits
       let h = this.data.habit
       h.deleted = true
       habits[h.id] = h

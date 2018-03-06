@@ -20,9 +20,9 @@ Page({
   },
   updateDate: function (date) {
     this.setData({date})
-    this.loadData()
+    this.refresh()
   },
-  loadData: function () {
+  refresh: function () {
     const days = '日一二三四五六'
     let day = moment(this.data.date).day().valueOf()
     // log.info(this.data.date)
@@ -31,9 +31,9 @@ Page({
       left: '周' + days[(day + 6 ) % 7],
       right: this.data.date > Date.now() ? '' : '周' + days[(day + 1 ) % 7]
     })
-    let all = wx.getStorageSync('records')
-    // log.info('all', all)
-    let habits = wx.getStorageSync('habits')
+    let app = getApp()
+    let all = app.data.records
+    let habits = app.data.habits
     let startOfDate = moment(this.data.date).startOf('day')
     let endOfDate = moment(this.data.date).endOf('day')
 
@@ -58,13 +58,14 @@ Page({
     log.info('records', result)
   },
   onLoad: function () {
+    getApp().addCallback(this.refresh)
     // wx.clearStorage()
-    this.loadData()
+    this.refresh()
   },
   newRecord: function (event) {
     log.info('event', event)
     let hid = event.target.dataset.hid
-    let all = wx.getStorageSync('records') || {}
+    let all = getApp().data.records
     let key = Date.now()
     if (this.data.date === moment(key).endOf('day').unix() * 1000) {
       key = this.data.date
@@ -73,24 +74,24 @@ Page({
     hrecords[key] = 0
     all[hid] = hrecords
     wx.setStorageSync('records', all)
-    this.loadData()
+    this.refresh()
   },
   delRecord: function (event) {
     log.info('event', event)
     let hid = event.target.dataset.hid
     let key = event.target.dataset.key
-    let all = wx.getStorageSync('records') || {}
+    let all = getApp().data.records
     delete all[hid][key]
     wx.setStorageSync('records', all)
-    this.loadData()
+    this.refresh()
   },
   changeRecord: function (event, delta) {
     let hid = event.target.dataset.hid
     let key = event.target.dataset.key
-    let all = wx.getStorageSync('records') || {}
+    let all = getApp().data.records
     all[hid][key] += delta
     wx.setStorageSync('records', all)
-    this.loadData()
+    this.refresh()
   },
   plus: function (event) {
     log.info('plus', event)
@@ -109,14 +110,14 @@ Page({
   toggle: function (event) {
     log.info('toggle', event)
     let hid = event.target.dataset.hid
-    let all = wx.getStorageSync('records') || {}
+    let all = getApp().data.records
     let hrecords = all[hid] || {}
     let keys = Object.keys(hrecords).filter(k => k > this.data.date - 1000 * 3600 * 24 && k <= this.data.date)
     let key = (keys === []) ? this.data.date : keys[0]
     hrecords[key] = !(hrecords[key] || false)
     all[hid] = hrecords
     wx.setStorageSync('records', all)
-    this.loadData()
+    this.refresh()
   },
   nav: function (event) {
     log.info('redirect', event.currentTarget.dataset.dest)

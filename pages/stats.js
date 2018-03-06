@@ -17,8 +17,8 @@ Page({
   },
   onLoad: function (options) {
     let hid = options.id
-    let all = wx.getStorageSync('records') || {}
-    let habits = wx.getStorageSync('habits') || {}
+    let all = getApp().data.records
+    let habits = getApp().data.habits
     let records = all[hid]
     let habit = habits[hid]
     let values = {}

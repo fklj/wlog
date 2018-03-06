@@ -13,9 +13,9 @@ App({
         }
       }
     }
-    if (!wx.getStorageSync('habits')) {
+    // if (!wx.getStorageSync('habits')) {
       this.syncFromServer()
-    }
+    // }
   },
   login: function() {
     let app = this
@@ -43,15 +43,11 @@ App({
   },
   syncToServer: function () {
     let cookie = wx.getStorageSync('koa:sess') + ';' + wx.getStorageSync('koa:sess.sig')
-    let data = {
-      habits: wx.getStorageSync('habits'),
-      records: wx.getStorageSync('records'),
-      updatedTime: Date.now()
-    }
+    this.data.updatedTime = Date.now()
     wx.request({
       url: 'https://vitalog.cn/s/vlog/data/0',
       method: 'POST',
-      data,
+      data: this.data,
       header: {
         cookie
       },
@@ -61,6 +57,7 @@ App({
     })
   },
   syncFromServer: function () {
+    let app = this
     let cookie = wx.getStorageSync('koa:sess') + ';' + wx.getStorageSync('koa:sess.sig')
     wx.request({
       url: 'https://vitalog.cn/s/vlog/data/0',
@@ -69,19 +66,17 @@ App({
       },
       success: function (res) {
         if (res.data) {
+          app.data.habits = res.data.habits
+          app.data.records = res.data.records
           wx.setStorageSync('habits', res.data.habits)
           wx.setStorageSync('records', res.data.records)
+          for (let cb of app.callbacks) {
+            cb()
+          }
           wx.showToast({
             title: '同步数据完成',
             icon: 'success',
-            duration: 1000,
-            success: () => {
-              setTimeout(() => {
-                wx.redirectTo({
-                  url: 'daily'
-                })
-              }, 1000)
-            }
+            duration: 1000
           })
         }
       }
@@ -90,7 +85,12 @@ App({
   onHide: function () {
     this.syncToServer()
   },
-  globalData: {
-    userInfo: null
+  addCallback: function (cb) {
+    this.callbacks.push(cb)
+  },
+  callbacks: [],
+  data: {
+    habits: wx.getStorageSync('habits') || {},
+    records: wx.getStorageSync('records') || {}
   }
 })

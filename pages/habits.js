@@ -5,13 +5,19 @@ Page({
   data: {
     habits: []
   },
-  onShow: function () {
-    let habits = Object.values(wx.getStorageSync('habits')) || []
+  refresh: function () {
+    log.info('refresh habits')
+    let habits = Object.values(getApp().data.habits)
     habits = habits.filter(h => !h.deleted)
     this.setData({
       habits
     })
-    log.info('habits', habits)
+  },
+  onLoad: function () {
+    getApp().addCallback(this.refresh)
+  },
+  onShow: function () {
+    this.refresh()
   },
   nav: function (event) {
     log.info('navigateTo', event.currentTarget.dataset.dest)
