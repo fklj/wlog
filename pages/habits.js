@@ -14,8 +14,8 @@ Page({
     log.info('habits', habits)
   },
   nav: function (event) {
-    log.info('redirect', event.currentTarget.dataset.dest)
-    wx.redirectTo({
+    log.info('navigateTo', event.currentTarget.dataset.dest)
+    wx.navigateTo({
       url: event.currentTarget.dataset.dest
     })
   },

@@ -71,12 +71,6 @@ Page({
     log.info('change hvalues', event.detail.value)
     this.setData({hvalues: event.detail.value})
   },
-  nav: function (event) {
-    log.info('redirect', event.currentTarget.dataset.dest)
-    wx.redirectTo({
-      url: event.currentTarget.dataset.dest
-    })
-  },
   normalizeHabit: function(h, habits, hvalues) {
     let valuesStr = hvalues.replace(/^\s+|\s+$/g, '')
     if (h.type === 'custom') {

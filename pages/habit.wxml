@@ -56,7 +56,6 @@
       </view>
 
       <button formType="submit">保存</button>
-      <button class="warn" bind:tap="nav" data-dest="habits">返回</button>
       <button class="danger" bind:tap="remove">删除</button>
     </form>
   </view>

@@ -120,7 +120,7 @@ Page({
   },
   nav: function (event) {
     log.info('redirect', event.currentTarget.dataset.dest)
-    wx.redirectTo({
+    wx.navigateTo({
       url: event.currentTarget.dataset.dest
     })
   }

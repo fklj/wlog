@@ -14,12 +14,6 @@ Component({
   data: {
   },
   methods: {
-    nav: function (event) {
-      log.info('redirect', event.target.dataset.dest)
-      wx.redirectTo({
-        url: event.target.dataset.dest
-      })
-    }
   },
 
 })

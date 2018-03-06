@@ -9,8 +9,32 @@
   ],
   "window":{
     "backgroundTextStyle":"light",
-    "navigationBarBackgroundColor": "#fff",
+    "navigationBarBackgroundColor": "#FFFFFF",
     "navigationBarTitleText": "WeChat",
-    "navigationBarTextStyle":"black"
+    "navigationBarTextStyle": "black"
+  },
+  "tabBar": {
+    "color": "gray",
+    "selectedColor": "#4AA6B5",
+    "backgroundColor": "#FFFFFF",
+    "list":[{
+      "pagePath":"pages/daily",
+      "text": "记录",
+      "selectedText": "记录",
+      "iconPath": "icons/p12.png",
+      "selectedIconPath": "icons/p1.png"
+    }, {
+      "pagePath":"pages/habits",
+      "text": "日程",
+      "selectedText": "日程",
+      "iconPath": "icons/p2.png",
+      "selectedIconPath": "icons/p21.png"
+    }, {
+      "pagePath":"pages/info",
+      "text": "关于",
+      "selectedText": "关于",
+      "iconPath": "icons/p2.png",
+      "selectedIconPath": "icons/p21.png"
+    }]
   }
 }
