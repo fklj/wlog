@@ -29,12 +29,6 @@
       "selectedText": "日程",
       "iconPath": "icons/p2.png",
       "selectedIconPath": "icons/p21.png"
-    }, {
-      "pagePath":"pages/info",
-      "text": "关于",
-      "selectedText": "关于",
-      "iconPath": "icons/p2.png",
-      "selectedIconPath": "icons/p21.png"
     }]
   }
 }

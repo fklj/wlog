@@ -5,7 +5,7 @@ Page({
   data: {
     habits: []
   },
-  onLoad: function () {
+  onShow: function () {
     let habits = Object.values(wx.getStorageSync('habits')) || []
     habits = habits.filter(h => !h.deleted)
     this.setData({

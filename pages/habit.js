@@ -113,6 +113,6 @@ Page({
       habits[h.id] = h
       wx.setStorageSync('habits', habits)
     }
-    wx.redirectTo({url: 'habits'})
+    wx.navigateBack()
   }
 })

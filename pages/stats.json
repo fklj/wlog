@@ -1,5 +1,5 @@
 {
-  "navigationBarTitleText": "Stats",
+  "navigationBarTitleText": "维他记",
   "usingComponents": {
     "layout": "components/layout"
   }

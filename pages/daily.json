@@ -1,5 +1,5 @@
 {
-  "navigationBarTitleText": "活动记录",
+  "navigationBarTitleText": "维他记",
   "usingComponents": {
     "layout": "components/layout",
     "range-record": "components/range-record",
