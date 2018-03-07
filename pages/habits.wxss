@@ -22,7 +22,7 @@
 
 .habit .config {
   flex: 0 0 60px;
-  color: #81CBC8;
+  color: #51ADCF;
 }
 
 .habit .stat {
@@ -35,5 +35,22 @@
 }
 
 #actions button {
-  margin-bottom: 0.5rem;
+  background-color: #81CBC8;
+}
+
+#market {
+  margin-top: 1rem;
+  display: flex;
+}
+
+#market button {
+  flex: 1;
+}
+
+#market #view {
+  background-color: #51ADCF;
+}
+
+#market #publish {
+  background-color: #FFC97C;
 }

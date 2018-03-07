@@ -20,9 +20,10 @@
     </block>
     <view id="actions">
       <button id="new" bind:tap="nav" data-dest="habit">新建活动</button>
+    </view>
+    <view id="market">
       <button id="view" bind:tap="nav" data-dest="market">浏览可用日程</button>
       <button id="publish" bind:tap="publish" data-dest="habit">发布我的日程</button>
-
     </view>
   </view>
 </layout>

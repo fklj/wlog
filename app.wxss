@@ -16,7 +16,7 @@
 */
 
 button {
-  margin: auto 1rem;
+  margin: auto 0.5rem;
   height: 2rem;
   line-height: 2rem;
   background-color: #ECFAFB;
