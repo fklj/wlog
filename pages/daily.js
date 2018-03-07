@@ -65,13 +65,16 @@ Page({
   },
   newRecord: function (event) {
     log.info('event', event)
-    let hid = event.target.dataset.hid
+    let hid = event.currentTarget.dataset.hid
     let all = getApp().data.records
-    let key = Date.now()
-    if (this.data.date === moment(key).endOf('day').unix() * 1000) {
-      key = this.data.date
-    }
     let hrecords = all[hid] || {}
+    let key = Date.now()
+    if (this.data.date !== moment(key).endOf('day').unix() * 1000) {
+      key = this.data.date
+      while (key in hrecords) {
+        key += 1
+      }
+    }
     hrecords[key] = 0
     all[hid] = hrecords
     getApp().save()
@@ -79,16 +82,16 @@ Page({
   },
   delRecord: function (event) {
     log.info('event', event)
-    let hid = event.target.dataset.hid
-    let key = event.target.dataset.key
+    let hid = event.currentTarget.dataset.hid
+    let key = event.currentTarget.dataset.key
     let all = getApp().data.records
     delete all[hid][key]
     getApp().save()
     this.refresh()
   },
   changeRecord: function (event, delta) {
-    let hid = event.target.dataset.hid
-    let key = event.target.dataset.key
+    let hid = event.currentTarget.dataset.hid
+    let key = event.currentTarget.dataset.key
     let all = getApp().data.records
     all[hid][key] += delta
     getApp().save()
@@ -110,7 +113,7 @@ Page({
   },
   toggle: function (event) {
     log.info('toggle', event)
-    let hid = event.target.dataset.hid
+    let hid = event.currentTarget.dataset.hid
     let all = getApp().data.records
     let hrecords = all[hid] || {}
     let keys = Object.keys(hrecords).filter(k => k > this.data.date - 1000 * 3600 * 24 && k <= this.data.date)

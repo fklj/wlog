@@ -29,16 +29,16 @@
                               data-hid="{{hrecords.key}}" data-key="{{record.key}}">
                   {{record.value}}
                 </range-record>
-                <view class="action del" bind:tap="delRecord"
-                      data-hid="{{hrecords.key}}" data-key="{{record.key}}">
-                  <text class="fa fa-minus-circle" />
+                <view class="action del">
+                  <text class="fa fa-minus-circle" bind:tap="delRecord"
+                        data-hid="{{hrecords.key}}" data-key="{{record.key}}" />
                 </view>
               </view>
             </block>
             <view class="record" wx:if="{{!habits[hrecords.key].once || hrecords.value.length === 0 }}">
               <view class="value"/>
-              <view class="action add" bind:tap="newRecord" data-hid="{{hrecords.key}}">
-                <text class="fa fa-plus-circle" />
+              <view class="action add">
+                <text class="fa fa-plus-circle" bind:tap="newRecord" data-hid="{{hrecords.key}}" />
               </view>
             </view>
           </block>
