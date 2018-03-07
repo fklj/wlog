@@ -59,7 +59,8 @@ Page({
   },
   onLoad: function () {
     getApp().addCallback(this.refresh)
-    // wx.clearStorage()
+  },
+  onShow: function () {
     this.refresh()
   },
   newRecord: function (event) {
@@ -73,7 +74,7 @@ Page({
     let hrecords = all[hid] || {}
     hrecords[key] = 0
     all[hid] = hrecords
-    wx.setStorageSync('records', all)
+    getApp().save()
     this.refresh()
   },
   delRecord: function (event) {
@@ -82,7 +83,7 @@ Page({
     let key = event.target.dataset.key
     let all = getApp().data.records
     delete all[hid][key]
-    wx.setStorageSync('records', all)
+    getApp().save()
     this.refresh()
   },
   changeRecord: function (event, delta) {
@@ -90,7 +91,7 @@ Page({
     let key = event.target.dataset.key
     let all = getApp().data.records
     all[hid][key] += delta
-    wx.setStorageSync('records', all)
+    getApp().save()
     this.refresh()
   },
   plus: function (event) {
@@ -116,7 +117,7 @@ Page({
     let key = (keys === []) ? this.data.date : keys[0]
     hrecords[key] = !(hrecords[key] || false)
     all[hid] = hrecords
-    wx.setStorageSync('records', all)
+    getApp().save()
     this.refresh()
   },
   nav: function (event) {

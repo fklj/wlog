@@ -13,9 +13,7 @@ App({
         }
       }
     }
-    // if (!wx.getStorageSync('habits')) {
-      this.syncFromServer()
-    // }
+    this.syncFromServer()
   },
   login: function() {
     let app = this
@@ -65,11 +63,12 @@ App({
         cookie
       },
       success: function (res) {
-        if (res.data) {
+        log.info('remote updated time:', new Date(res.data.updatedTime))
+        if (res.data && res.data.updatedTime > app.data.updatedTime) {
+          log.info('update local data')
           app.data.habits = res.data.habits
           app.data.records = res.data.records
-          wx.setStorageSync('habits', res.data.habits)
-          wx.setStorageSync('records', res.data.records)
+          app.save()
           for (let cb of app.callbacks) {
             cb()
           }
@@ -91,6 +90,13 @@ App({
   callbacks: [],
   data: {
     habits: wx.getStorageSync('habits') || {},
-    records: wx.getStorageSync('records') || {}
+    records: wx.getStorageSync('records') || {},
+    updatedTime: wx.getStorageSync('updatedTime') || 0
+  },
+  save: function () {
+    this.data.updatedTime = Date.now()
+    wx.setStorageSync('habits', this.data.habits)
+    wx.setStorageSync('records', this.data.records)
+    wx.setStorageSync('updatedTime', this.data.updatedTime)
   }
 })

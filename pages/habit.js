@@ -101,7 +101,7 @@ Page({
       h = this.normalizeHabit(h, habits, this.data.hvalues)
       log.info('save habit', h)
       habits[h.id] = h
-      wx.setStorageSync('habits', habits)
+      getApp().save()
       wx.navigateBack()
     }, 200)
   },
@@ -111,7 +111,7 @@ Page({
       let h = this.data.habit
       h.deleted = true
       habits[h.id] = h
-      wx.setStorageSync('habits', habits)
+      getApp().save()
     }
     wx.navigateBack()
   }
