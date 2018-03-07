@@ -3,13 +3,19 @@
 .record {
   width: 100%;
   display: flex;
-  font-size: 1.1rem;
+  font-size: 1rem;
 }
 
 .record .value {
   width: 60%;
   text-align: center;
+  height: 2rem;
   line-height: 2rem;
+  overflow: hidden;
+}
+
+.record .value .unit {
+  font-size: 0.8rem;
 }
 
 .record .action {
