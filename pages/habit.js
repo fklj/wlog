@@ -95,7 +95,7 @@ Page({
   },
   save: function () {
     // FIXME: 保证已经处理change事件
-    setTimeout(() => {
+    // setTimeout(() => {
       let habits = getApp().data.habits
       let h = this.data.habit
       h = this.normalizeHabit(h, habits, this.data.hvalues)
@@ -103,7 +103,7 @@ Page({
       habits[h.id] = h
       getApp().save()
       wx.navigateBack()
-    }, 200)
+    // }, 200)
   },
   remove: function () {
     let hid = this.data.habit.id
