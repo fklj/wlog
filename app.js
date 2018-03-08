@@ -27,6 +27,17 @@ App({
             method: 'POST',
             success: function (res) {
               app.saveSession(res)
+              let cookie = wx.getStorageSync('koa:sess') + ';' + wx.getStorageSync('koa:sess.sig')
+              wx.request({
+                url: 'https://vitalog.cn/s/status',
+                header: {
+                  cookie
+                },
+                success: function (res) {
+                  app.data.uid = res.data.uid
+                  log.info('uid=', app.data.uid)
+                }
+              })
             }
           })
         }

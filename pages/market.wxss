@@ -12,6 +12,10 @@
   margin-bottom: 1rem;
 }
 
+#all.header {
+  margin-top: 1rem;
+}
+
 .template {
   height: 2rem;
   line-height: 2rem;

@@ -1,6 +1,18 @@
 <layout page="market">
   <view class="market">
     <view class="header">
+      我发布的日程
+    </view>
+    <block wx:for="{{templates}}" wx:for-item="template" wx:key="template.id">
+      <block wx:if="{{ uid === template.value.uid }}">
+        <view class="template">
+          <view class="name">{{ template.value.content.name }}</view>
+          <button class="danger" bind:tap="del" data-id="{{template.key}}">删除</button>
+        </view>
+      </block>
+    </block>
+
+    <view id="all" class="header">
       所有日程
     </view>
     <block wx:for="{{templates}}" wx:for-item="template" wx:key="template.id">
