@@ -38,10 +38,8 @@ Page({
     let habits = event.currentTarget.dataset.habits
     let myhabits = getApp().data.habits
     for (let h of habits) {
-      if (!(h.id in myhabits) || myhabits[h.id].deleted) {
-        h.order = Object.keys(myhabits).length
-        myhabits[h.id] = h
-      }
+      h.order = Object.keys(myhabits).length
+      myhabits[h.id] = h
     }
     getApp().save()
     wx.navigateBack()
