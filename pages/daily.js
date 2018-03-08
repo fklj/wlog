@@ -34,11 +34,13 @@ Page({
     let app = getApp()
     let all = app.data.records
     let habits = app.data.habits
+    let keys = Object.keys(habits)
+    keys.sort((a, b) => habits[a].order - habits[b].order)
     let startOfDate = moment(this.data.date).startOf('day')
     let endOfDate = moment(this.data.date).endOf('day')
 
     let result = {}
-    for (let hid in habits) {
+    for (let hid of keys) {
       let habitRecords = all[hid]
       let activeRecords = []
       for (let t in habitRecords) {

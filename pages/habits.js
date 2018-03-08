@@ -9,6 +9,7 @@ Page({
     log.info('refresh habits')
     let habits = Object.values(getApp().data.habits)
     habits = habits.filter(h => !h.deleted)
+    habits.sort((a, b) => a.order - b.order)
     this.setData({
       habits
     })
