@@ -8,8 +8,9 @@
   <view id="records">
     <block wx:for="{{records}}" wx:for-item="hrecords" wx:key="hrecords.key">
       <view class="habit">
-        <view class="name" bind:tap="nav" data-dest="stats?id={{hrecords.key}}">
-          <text class="stat fa fa-bar-chart"></text> {{habits[hrecords.key].name}}
+        <view class="name">
+          <text class="stat fa fa-bar-chart" bind:tap="nav" data-dest="stats?id={{hrecords.key}}">
+          </text> {{habits[hrecords.key].name}}
         </view>
         <view class="records">
           <block wx:if="{{habits[hrecords.key].type === 'check' }}">
