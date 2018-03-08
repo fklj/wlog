@@ -16,6 +16,12 @@
         <view class="stat" bind:tap="nav" data-dest="stats?id={{habit.id}}">
           <text class="fa fa-bar-chart"></text>
         </view>
+        <view class="up" bind:tap="moveUp" data-idx="{{index}}">
+          <text class="fa fa-chevron-up"></text>
+        </view>
+        <view class="down" bind:tap="moveDown" data-idx="{{index}}">
+          <text class="fa fa-chevron-down"></text>
+        </view>
       </view>
     </block>
     <view id="actions">

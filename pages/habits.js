@@ -68,6 +68,26 @@ Page({
         })
       }
     })
-
-  }
+  },
+  swap: function (a, b) {
+    let hs = this.data.habits
+    log.info('swap', a, b, hs[a], hs[b])
+    if (a < 0 || b > hs.length - 1) {
+      return
+    }
+    let tmp = hs[a].order
+    hs[a].order = hs[b].order
+    hs[b].order = tmp
+    log.info('swap', a, b, hs[a], hs[b])
+    getApp().save()
+    this.refresh()
+  },
+  moveUp: function (event) {
+    let idx = event.currentTarget.dataset.idx
+    this.swap(idx - 1, idx)
+  },
+  moveDown: function (event) {
+    let idx = event.currentTarget.dataset.idx
+    this.swap(idx, idx + 1)
+  },
 })

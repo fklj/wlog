@@ -21,13 +21,23 @@
 }
 
 .habit .config {
-  flex: 0 0 60px;
+  flex: 0 0 50px;
   color: #51ADCF;
 }
 
 .habit .stat {
+  flex: 0 0 50px;
+  color: darkcyan;
+}
+
+.habit .up {
   flex: 0 0 40px;
-  color: #4AA6B5;
+  color: #81CBC8;
+}
+
+.habit .down {
+  flex: 0 0 20px;
+  color: #81CBC8;
 }
 
 #actions {
