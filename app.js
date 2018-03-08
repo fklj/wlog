@@ -47,8 +47,18 @@ App({
       }
     })
   },
+  organizeHabits: function () {
+    let habits = this.data.habits
+    let keys = Object.keys(habits)
+    keys.sort((a,b) => habits[a].order - habits[b].order)
+    let idx = 0
+    keys.forEach(key => {
+      habits[key].order = idx ++
+    })
+  },
   onLaunch: function () {
     this.login()
+    this.organizeHabits()
   },
   syncToServer: function () {
     let cookie = wx.getStorageSync('koa:sess') + ';' + wx.getStorageSync('koa:sess.sig')
