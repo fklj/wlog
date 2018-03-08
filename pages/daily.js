@@ -119,7 +119,7 @@ Page({
     let all = getApp().data.records
     let hrecords = all[hid] || {}
     let keys = Object.keys(hrecords).filter(k => k > this.data.date - 1000 * 3600 * 24 && k <= this.data.date)
-    let key = (keys === []) ? this.data.date : keys[0]
+    let key = (keys.length === 0) ? this.data.date : keys[0]
     hrecords[key] = !(hrecords[key] || false)
     all[hid] = hrecords
     getApp().save()
